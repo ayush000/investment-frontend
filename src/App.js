@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3005/api')
+    axios.get('http://localhost:3005/api/unique-funds')
       .then(response => {
         console.log(response);
         this.setState({
