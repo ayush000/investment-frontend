@@ -39,14 +39,17 @@ class InvestmentForm extends Component {
       parseInt(amountInvested, 10) > 0) {
       this.props.handleSubmit(this.state)
     } else {
-      alert(JSON.stringify(this.state));
+      alert('Missing data');
     }
   }
 
   render() {
     const { uniqueFunds } = this.props;
+    console.log(typeof this.state.purchaseDate);
+    console.log(this.state.purchaseDate);
+    
     return (
-      <div>
+      <div style={{ lineHeight: '2em' }}>
         <form onSubmit={this.handleSubmit}>
           <label>
             Fund name:
@@ -67,15 +70,14 @@ class InvestmentForm extends Component {
           <label>
             Date purchased:
             <DatePicker
+              tetherConstraints={[]}
               selected={this.state.purchaseDate}
               onChange={this.handleDateChange}
-              withPortal
             />
           </label>
           <br />
           <input type="submit" value="Submit" />
         </form>
-        {JSON.stringify(this.state)}
       </div>
     );
   }
