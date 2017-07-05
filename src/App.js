@@ -3,26 +3,31 @@ import axios from 'axios';
 
 import InvestmentForm from './InvestmentForm';
 import FundsTable from './FundsTable';
-import './App.css';
 
 class App extends Component {
-  state = {
-    uniqueFunds: [],
-    tableData: [],
+  constructor() {
+    super();
+    this.state = {
+      uniqueFunds: [],
+      tableData: [],
+    }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
   componentDidMount() {
     axios.get('http://localhost:3005/api/unique-funds')
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           uniqueFunds: response.data.uniqueFunds,
         });
-      });
+      })
+      .catch(err => alert(err));
     axios.get('http://localhost:3005/api/user-funds')
       .then(response => {
         this.setState({ tableData: response.data })
       })
+      .catch(err => alert(err));
   }
 
   handleFormSubmit = params => {
@@ -32,6 +37,7 @@ class App extends Component {
       .then(response => {
         this.setState({ tableData: [...tableData, response.data] })
       })
+      .catch(err => alert(err));
   }
 
   render() {

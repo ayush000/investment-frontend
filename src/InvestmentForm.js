@@ -6,15 +6,17 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 
 class InvestmentForm extends Component {
-  state = {
-    selectedFund: '',
-    purchaseDate: moment().subtract(1, 'day'),
-    amountInvested: ''
-  }
-
-  static propTypes = {
-    uniqueFunds: PropTypes.array.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
+  constructor() {
+    super();
+    this.state = {
+      selectedFund: '',
+      purchaseDate: moment().subtract(1, 'day'),
+      amountInvested: ''
+    }
+    this.handleDateChange = this.handleDateChange.bind(this)
+    this.handleAmountChange = this.handleAmountChange.bind(this)
+    this.handleFundChange = this.handleFundChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleDateChange = date => {
@@ -45,9 +47,7 @@ class InvestmentForm extends Component {
 
   render() {
     const { uniqueFunds } = this.props;
-    console.log(typeof this.state.purchaseDate);
-    console.log(this.state.purchaseDate);
-    
+
     return (
       <div style={{ lineHeight: '2em' }}>
         <form onSubmit={this.handleSubmit}>
@@ -81,5 +81,9 @@ class InvestmentForm extends Component {
       </div>
     );
   }
+}
+InvestmentForm.propTypes = {
+  uniqueFunds: PropTypes.array.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 }
 export default InvestmentForm;

@@ -4,9 +4,6 @@ import Table from 'react-table';
 import 'react-table/react-table.css'
 
 class FundsTable extends Component {
-  static propTypes = {
-    data: PropTypes.array.isRequired,
-  }
   render() {
     const columns = [{
       Header: 'ID',
@@ -32,6 +29,10 @@ class FundsTable extends Component {
       />
     );
   }
+}
+
+FundsTable.propTypes = {
+  data: PropTypes.array.isRequired,
 }
 
 export default FundsTable;
