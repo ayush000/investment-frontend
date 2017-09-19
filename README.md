@@ -1,5 +1,7 @@
 # Frontend
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ayush000/investment-frontend.svg)](https://greenkeeper.io/)
+
 The repo contains the frontend code for finding the value of investments.
 
 1. Create a mysql database
